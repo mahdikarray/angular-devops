@@ -1,0 +1,57 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE_NAME = "karraymahdi/angular"
+        DOCKER_HUB_CREDENTIALS = 'DockerHubCredentials'
+        DOCKER_COMPOSE_VERSION = "1.29.2"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Angular') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build -- --prod'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'DockerHubCredentials') {
+                        docker.image("${DOCKER_IMAGE_NAME}").push()
+                    }
+                }
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                sh 'docker-compose -f docker-compose-angular.yml down'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Angular build successful!'
+        }
+        failure {
+            echo 'Angular build failed!'
+        }
+    }
+}
