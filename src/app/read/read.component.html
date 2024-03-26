@@ -1,0 +1,21 @@
+<!-- src/app/read/read.component.html -->
+
+<h2>chambers List</h2>
+
+<button (click)="goToAdd()">Add chamber</button>
+
+<table>
+  <tr>
+    <th>numero</th>
+    <th>type</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let chambre of chambres">
+    <td>{{ chambre.numero }}</td>
+    <td>{{ chambre.typeC }}</td>
+    <td>
+      <button (click)="goToUpdate(chambre.idChambre)">Update</button>
+      <button (click)="delete(chambre.idChambre)">Delete</button>
+    </td>
+  </tr>
+</table>
