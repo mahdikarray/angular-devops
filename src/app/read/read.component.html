@@ -6,13 +6,13 @@
 
 <table>
   <tr>
-    <th>numero</th>
-    <th>type</th>
+    <th>numeroChambre</th>
+    <th>typeChambre</th>
     <th>Actions</th>
   </tr>
   <tr *ngFor="let chambre of chambres">
-    <td>{{ chambre.numero }}</td>
-    <td>{{ chambre.typeC }}</td>
+    <td>{{ chambre.numeroChambre }}</td>
+    <td>{{ chambre.typeChambre }}</td>
     <td>
       <button (click)="goToUpdate(chambre.idChambre)">Update</button>
       <button (click)="delete(chambre.idChambre)">Delete</button>

@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class ChambreService {
 
-  private baseUrl = 'http://http://192.168.33.10:8087/chambre';
+  private baseUrl = 'http://localhost:8087/chambre';
+
 
   constructor(private http: HttpClient) { }
 

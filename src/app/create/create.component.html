@@ -4,12 +4,12 @@
 
 <form (submit)="addChambre()">
   <div>
-    <label for="numero">numero:</label>
-    <input type="text" id="numero" [(ngModel)]="chambre.numeroChambre" name="numero" required>
+    <label for="numeroChambre">numero:</label>
+    <input type="text" id="numeroChambre" [(ngModel)]="chambre.numeroChambre" name="numeroChambre" required>
   </div>
   <div>
-    <label for="type">type:</label>
-    <input type="text" id="type" [(ngModel)]="chambre.typeC" name="type" required>
+    <label for="typeChambre">typeChambre:</label>
+    <input type="text" id="typeChambre" [(ngModel)]="chambre.typeChambre" name="typeChambre" required>
   </div>
   <button type="submit">Add</button>
 </form>
