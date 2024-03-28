@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ChambreService {
 
-  private baseUrl = 'http://spring:8087/chambre';
+  private baseUrl = 'http://localhost:8087/chambre';
 
 
   constructor(private http: HttpClient) { }
