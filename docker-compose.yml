@@ -1,21 +1,25 @@
-version: '3.8'
 services:
   angular-app:
     image: karraymahdi/angular:latest
     ports:
-      - "4201:80"  # Specify ports as strings
-    restart: always  # Restart should be under the service
+      - "4201:80"
+    restart: always
+
   prometheus:
-    image: prom/prometheusfront
+    image: prom/prometheus
     ports:
-      - "9092:9090"  # Specify ports as strings
+      - "9092:9090"
     volumes:
       - /home/vagrant/prometheus.yml:/etc/prometheus/prometheus.yml
+
   grafana:
-    image: grafana/grafanafront
+    image: grafana/grafana
     ports:
-      - "3002:3000"  # Specify ports as strings
+      - "3002:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=esprit
     volumes:
       - grafana_data:/var/lib/grafana
+
+volumes:
+  grafana_data:
